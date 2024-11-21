@@ -1,10 +1,19 @@
 fileFormatVersion: 2
-guid: a08efa43683e64804bc41c59aa3e5718
+guid: 1d5919640285b45009d5ff135e621ca4
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -587511325676022338
-    second: Flower Stage 1_0
+      213: 1244801080708239556
+    second: 121plant_0
+  - first:
+      213: 7822895806365605793
+    second: 121plant_1
+  - first:
+      213: 779142846454255134
+    second: 121plant_2
+  - first:
+      213: 8406422402731311887
+    second: 121plant_3
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -126,13 +135,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Flower Stage 1_0
+      name: 121plant_0
       rect:
         serializedVersion: 2
-        x: 39
-        y: 79
-        width: 186
-        height: 114
+        x: 4
+        y: 45
+        width: 11
+        height: 17
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -140,8 +149,71 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: eb5df83ef8db8d7f0800000000000000
-      internalID: -587511325676022338
+      spriteID: 4c013a7dcfb664110800000000000000
+      internalID: 1244801080708239556
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: 121plant_1
+      rect:
+        serializedVersion: 2
+        x: 1
+        y: 25
+        width: 16
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 1af9055d942809c60800000000000000
+      internalID: 7822895806365605793
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: 121plant_2
+      rect:
+        serializedVersion: 2
+        x: 18
+        y: 25
+        width: 17
+        height: 11
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e1e41307a4210da00800000000000000
+      internalID: 779142846454255134
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: 121plant_3
+      rect:
+        serializedVersion: 2
+        x: 34
+        y: 25
+        width: 14
+        height: 17
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f038faad2ac99a470800000000000000
+      internalID: 8406422402731311887
       vertices: []
       indices: 
       edges: []
@@ -156,8 +228,7 @@ TextureImporter:
     edges: []
     weights: []
     secondaryTextures: []
-    nameFileIdTable:
-      Flower Stage 1_0: -587511325676022338
+    nameFileIdTable: {}
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
