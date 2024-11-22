@@ -17,6 +17,9 @@ public class Tile : MonoBehaviour
     public float _playerRange = 2f;
     private static Tile _selectedTile;
 
+    public GameObject currentPlant;
+    public int growthStage = 0;
+
     public float waterLevel = 0f;
     public float sunLevel = 0f;
     public static Tile SelectedTile => _selectedTile;

@@ -5,6 +5,12 @@ TagManager:
   serializedVersion: 2
   tags:
   - Background
+  - Sunflower
+  - Mushroom
+  - Herb
+  - Stg2Sunflower
+  - Stg2Mushroom
+  - Stg2Herb
   layers:
   - Default
   - TransparentFX
