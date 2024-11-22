@@ -26,16 +26,16 @@ public class SpawnPlant : MonoBehaviour
         {
             Tile selectedTile = Tile.SelectedTile;
 
-            // Check if water and sun levels meet the thresholds
             if (selectedTile.growthStage == 0 && selectedTile.waterLevel >= firstGrowthThreshold && selectedTile.sunLevel >= firstGrowthThreshold)
             {
-                Debug.Log("The plant has grown to stage 1!");
                 ReplacePlantWithGrown(selectedTile, 1);
             }
             else if (selectedTile.growthStage == 1 && selectedTile.waterLevel >= finalGrowthThreshold && selectedTile.sunLevel >= finalGrowthThreshold)
             {
-                Debug.Log("The plant has grown to the final stage!");
                 ReplacePlantWithGrown(selectedTile, 2);
+
+                // Increment the stage 3 counter when a plant reaches the final stage
+                ButtonManager.Instance.IncrementStage3Counter();
             }
         }
     }
@@ -61,20 +61,18 @@ public class SpawnPlant : MonoBehaviour
         {
             Tile selectedTile = Tile.SelectedTile;
 
-            // Destroy the current plant if it exists
             if (selectedTile.currentPlant != null)
             {
+                if (selectedTile.growthStage == 2) // If replacing a stage 3 plant, decrement counter
+                {
+                    ButtonManager.Instance.DecrementStage3Counter();
+                }
+
                 Destroy(selectedTile.currentPlant);
             }
 
-            // Instantiate the new plant and track it
             selectedTile.currentPlant = Instantiate(plantPrefab, selectedTile.transform.position, Quaternion.identity);
-            selectedTile.growthStage = 0; // Reset growth stage
-            Debug.Log("Plant has been planted on the tile!");
-        }
-        else
-        {
-            Debug.Log("No tile is selected.");
+            selectedTile.growthStage = 0;
         }
     }
 
@@ -84,46 +82,30 @@ public class SpawnPlant : MonoBehaviour
         {
             GameObject newPlantPrefab = null;
 
-            // Determine the next growth stage prefab
             if (tile.currentPlant.CompareTag("Sunflower"))
             {
-                if (newGrowthStage == 1)
-                {
-                    newPlantPrefab = grownSunflower;
-                }
-                else if (newGrowthStage == 2)
-                {
-                    newPlantPrefab = finalSunflower;
-                }
+                newPlantPrefab = newGrowthStage == 1 ? grownSunflower : finalSunflower;
             }
             else if (tile.currentPlant.CompareTag("Mushroom"))
             {
-                if (newGrowthStage == 1)
-                {
-                    newPlantPrefab = grownMushroom;
-                }
-                else if (newGrowthStage == 2)
-                {
-                    newPlantPrefab = finalMushroom;
-                }
+                newPlantPrefab = newGrowthStage == 1 ? grownMushroom : finalMushroom;
             }
             else if (tile.currentPlant.CompareTag("Herb"))
             {
-                if (newGrowthStage == 1)
-                {
-                    newPlantPrefab = grownHerb;
-                }
-                else if (newGrowthStage == 2)
-                {
-                    newPlantPrefab = finalHerb;
-                }
+                newPlantPrefab = newGrowthStage == 1 ? grownHerb : finalHerb;
             }
 
-            // Replace the plant if a prefab was found
             if (newPlantPrefab != null)
             {
                 Destroy(tile.currentPlant);
                 tile.currentPlant = Instantiate(newPlantPrefab, tile.transform.position, Quaternion.identity);
+
+                // If replacing a stage 3 plant, adjust counters
+                if (tile.growthStage == 2)
+                {
+                    ButtonManager.Instance.DecrementStage3Counter();
+                }
+
                 tile.growthStage = newGrowthStage;
             }
         }
@@ -132,9 +114,15 @@ public class SpawnPlant : MonoBehaviour
     public void DestroyPlant()
     {
         Tile selectedTile = Tile.SelectedTile;
-        if (selectedTile != null)
+        if (selectedTile != null && selectedTile.currentPlant != null)
         {
+            if (selectedTile.growthStage == 2) // If destroying a stage 3 plant, decrement counter
+            {
+                ButtonManager.Instance.DecrementStage3Counter();
+            }
+
             Destroy(selectedTile.currentPlant);
+            selectedTile.growthStage = 0;
         }
     }
 }
