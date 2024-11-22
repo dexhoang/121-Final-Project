@@ -26,16 +26,33 @@ public class SpawnPlant : MonoBehaviour
         {
             Tile selectedTile = Tile.SelectedTile;
 
-            if (selectedTile.growthStage == 0 && selectedTile.waterLevel >= firstGrowthThreshold && selectedTile.sunLevel >= firstGrowthThreshold)
+            if (selectedTile.currentPlant != null)
             {
-                ReplacePlantWithGrown(selectedTile, 1);
-            }
-            else if (selectedTile.growthStage == 1 && selectedTile.waterLevel >= finalGrowthThreshold && selectedTile.sunLevel >= finalGrowthThreshold)
-            {
-                ReplacePlantWithGrown(selectedTile, 2);
+                float waterThreshold = selectedTile.growthStage == 0 ? 20f : 40f;
+                float sunThreshold = selectedTile.growthStage == 0 ? 20f : 40f;
 
-                // Increment the stage 3 counter when a plant reaches the final stage
-                ButtonManager.Instance.IncrementStage3Counter();
+                // Check for similar plants nearby
+                int similarPlantCount = selectedTile.CountSimilarPlants(selectedTile.currentPlant.tag);
+
+                // Apply growth boost based on nearby similar plants
+                float growthBoost = similarPlantCount * 2f;
+                waterThreshold -= growthBoost;
+                sunThreshold -= growthBoost;
+
+                // Growth logic
+                if (selectedTile.waterLevel >= waterThreshold && selectedTile.sunLevel >= sunThreshold)
+                {
+                    if (selectedTile.growthStage == 0)
+                    {
+                        Debug.Log("The plant has grown to stage 1!");
+                        ReplacePlantWithGrown(selectedTile, 1);
+                    }
+                    else if (selectedTile.growthStage == 1)
+                    {
+                        Debug.Log("The plant has grown to the final stage!");
+                        ReplacePlantWithGrown(selectedTile, 2);
+                    }
+                }
             }
         }
     }
@@ -63,7 +80,8 @@ public class SpawnPlant : MonoBehaviour
 
             if (selectedTile.currentPlant != null)
             {
-                if (selectedTile.growthStage == 2) // If replacing a stage 3 plant, decrement counter
+                // Decrement counter
+                if (selectedTile.growthStage == 2)
                 {
                     ButtonManager.Instance.DecrementStage3Counter();
                 }
@@ -100,7 +118,6 @@ public class SpawnPlant : MonoBehaviour
                 Destroy(tile.currentPlant);
                 tile.currentPlant = Instantiate(newPlantPrefab, tile.transform.position, Quaternion.identity);
 
-                // If replacing a stage 3 plant, adjust counters
                 if (tile.growthStage == 2)
                 {
                     ButtonManager.Instance.DecrementStage3Counter();

@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 6848523484580662786}
   m_Layer: 0
   m_Name: Stg3 SunflowerPrefab
-  m_TagString: Untagged
+  m_TagString: Sunflower
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

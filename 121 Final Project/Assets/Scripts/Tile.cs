@@ -109,4 +109,44 @@ public class Tile : MonoBehaviour
         sunLevel += additionalSun;
         UpdateUI();
     }
+
+    public int CountSimilarPlants(string plantTag)
+    {
+        int count = 0;
+
+        // Offsets for neighboring tiles
+        Vector2Int[] directions = {
+            new Vector2Int(1, 0),  // Right
+            new Vector2Int(-1, 0), // Left
+            new Vector2Int(0, 1),  // Up
+            new Vector2Int(0, -1), // Down
+            new Vector2Int(1, 1),  // Top-right
+            new Vector2Int(-1, 1), // Top-left
+            new Vector2Int(1, -1), // Bottom-right
+            new Vector2Int(-1, -1) // Bottom-left
+        };
+
+        foreach (var dir in directions)
+        {
+            // Find the neighboring tile
+            Vector2 neighborPosition = new Vector2(transform.position.x + dir.x, transform.position.y + dir.y);
+            Collider2D hit = Physics2D.OverlapPoint(neighborPosition);
+
+            if (hit != null)
+            {
+                Tile neighborTile = hit.GetComponent<Tile>();
+                if (neighborTile != null && neighborTile.currentPlant != null)
+                {
+                    // Check if the neighboring plant has the same tag
+                    if (neighborTile.currentPlant.CompareTag(plantTag))
+                    {
+                        count++;
+                        Debug.Log($"Found a similar plant at position: {neighborTile.transform.position}");
+                    }
+                }
+            }
+        }
+        Debug.Log($"Total similar plants found: {count}");
+        return count;
+    }
 }
