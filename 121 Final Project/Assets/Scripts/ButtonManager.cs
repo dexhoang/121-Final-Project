@@ -12,6 +12,8 @@ public class ButtonManager : MonoBehaviour
     [SerializeField] private TextMeshProUGUI waterText;
     [SerializeField] private TextMeshProUGUI sunText;
     [SerializeField] private Button increaseLevelsButton;
+    [SerializeField] private TextMeshProUGUI counterText;
+    private int counter = 0;
 
     private void Awake()
     {
@@ -19,6 +21,7 @@ public class ButtonManager : MonoBehaviour
             Instance = this;
         else
             Destroy(gameObject);
+
         if (increaseLevelsButton != null)
         {
             increaseLevelsButton.onClick.AddListener(OnIncreaseLevelsClicked);
@@ -41,12 +44,23 @@ public class ButtonManager : MonoBehaviour
     {
         return _buttonPanel.activeSelf;
     }
+
     private void OnIncreaseLevelsClicked()
     {
         Tile[] allTiles = GameObject.FindObjectsOfType<Tile>();
         foreach (Tile tile in allTiles)
         {
             tile.IncreaseLevelsRandomly();
+        }
+        counter++;
+        UpdateCounterText();
+    }
+
+    private void UpdateCounterText()
+    {
+        if (counterText != null)
+        {
+            counterText.text = "Day: " + counter.ToString();
         }
     }
 }
