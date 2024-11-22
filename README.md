@@ -16,3 +16,19 @@
 
 ## Outlook 
 ### Our team hopes to complete this final project in a timely manner without having to rush before the due date. The hardest part of this project would be if we have to make a switch to a different platform/engine. This will not only impact our time, but will require us to transfer our work to an entirely new engine with may differ from our original platform. We are hoping to learn more about our platform and feel more comfortable using it for the future. 
+
+# Devlog Entry - [Nov 22, 2024]
+
+## How we satisfied the software requirements
+
+### [F0.a] The player is able to move over a generated 2D grid using either WASD or arrow keys.
+### [F0.b] Player can click on a 'Next Day' button to go on to the next day/turn to progress through the game. 
+### [F0.c] When the player is close enough to the grid cell, they are able to click onto which pops up a menu in the upper left hand corner of the screen which allows them to reap or sow one of three plants. 
+### [F0.d] Each grid cell starts off with 0 water and 0 sun. After each day, each cell gets a random amount of water and sun. Sunlight will change from day to day but the water will accumulate over time. 
+### [F0.e] Our three plants, mushrooms, flowers, and herbs, all have 3 distinct stages of growth which the player can visually see as they grow.
+### [F0.f] When the player plants something on a tile, the neighboring tiles are checked to see if there are plants under the same species as them. If they are present, the amount of water and sun level in order for the plant to grow is decreased. The decreased amount is determined on the number of similar plants around the selected tile.
+### [F0.g] When the player successfully grows 10 plants fully, a text will show that says "You Win". 
+
+## Reflection
+
+### After completing this part of the project, we realized that we have to split the workload more evenly with each other. The amount of work was greater than we thought which led us to chrunching on time and staying up late. As a result, we will focus more on our team organization and planning so that everyone does their fair share of work and not a majority of the work gets pushed onto a member(s).
