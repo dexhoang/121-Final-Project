@@ -1,10 +1,9 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+
 public class PlayerMovement : MonoBehaviour
-
 {
-
     public float moveSpeed = 5;
     private Animator animator;
 
@@ -14,25 +13,23 @@ public class PlayerMovement : MonoBehaviour
     }
 
     void Update()
-
     {
-
-        if (Input.GetKey(KeyCode.RightArrow))
+        if (Input.GetKey(KeyCode.RightArrow) || Input.GetKey(KeyCode.D))
         {
             transform.Translate(Vector2.right * moveSpeed * Time.deltaTime);
             animator.SetInteger("change", 4);
         }
-        else if (Input.GetKey(KeyCode.LeftArrow))
+        else if (Input.GetKey(KeyCode.LeftArrow) || Input.GetKey(KeyCode.A))
         {
             transform.Translate(Vector2.left * moveSpeed * Time.deltaTime);
             animator.SetInteger("change", 5);
         }
-        else if (Input.GetKey(KeyCode.UpArrow))
+        else if (Input.GetKey(KeyCode.UpArrow) || Input.GetKey(KeyCode.W))
         {
             transform.Translate(Vector2.up * moveSpeed * Time.deltaTime);
             animator.SetInteger("change", 3);
         }
-        else if (Input.GetKey(KeyCode.DownArrow))
+        else if (Input.GetKey(KeyCode.DownArrow) || Input.GetKey(KeyCode.S))
         {
             transform.Translate(Vector2.down * moveSpeed * Time.deltaTime);
             animator.SetInteger("change", 2);
@@ -42,5 +39,4 @@ public class PlayerMovement : MonoBehaviour
             animator.SetInteger("change", 1);
         }
     }
-
 }
