@@ -1500,10 +1500,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d239e55214f414b4ea30727165c096cc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _width: 32
-  _height: 18
+  _width: 15
+  _height: 6
   _startX: 10
-  _startY: -8
+  _startY: 4
   _tilePrefab: {fileID: 67611409376310496, guid: ce8e07f49bc3e7d4d83ccd6317713fa5, type: 3}
 --- !u!4 &1227218365
 Transform:
