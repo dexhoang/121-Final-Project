@@ -106,7 +106,7 @@ public class Tile : MonoBehaviour
         float additionalWater = Random.Range(0f, 3f);
         float additionalSun = Random.Range(0f, 3f);
         waterLevel += additionalWater;
-        sunLevel += additionalSun;
+        sunLevel = additionalSun;
         UpdateUI();
     }
 

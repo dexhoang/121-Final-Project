@@ -29,7 +29,7 @@ public class SpawnPlant : MonoBehaviour
             if (selectedTile.currentPlant != null)
             {
                 float waterThreshold = selectedTile.growthStage == 0 ? 20f : 40f;
-                float sunThreshold = selectedTile.growthStage == 0 ? 20f : 40f;
+                //float sunThreshold = selectedTile.growthStage == 0 ? 20f : 40f;
 
                 // Check for similar plants nearby
                 int similarPlantCount = selectedTile.CountSimilarPlants(selectedTile.currentPlant.tag);
@@ -37,10 +37,10 @@ public class SpawnPlant : MonoBehaviour
                 // Apply growth boost based on nearby similar plants
                 float growthBoost = similarPlantCount * 2f;
                 waterThreshold -= growthBoost;
-                sunThreshold -= growthBoost;
+                //sunThreshold -= growthBoost;
 
                 // Growth logic
-                if (selectedTile.waterLevel >= waterThreshold && selectedTile.sunLevel >= sunThreshold)
+                if (selectedTile.waterLevel >= waterThreshold)
                 {
                     if (selectedTile.growthStage == 0)
                     {
@@ -51,6 +51,9 @@ public class SpawnPlant : MonoBehaviour
                     {
                         Debug.Log("The plant has grown to the final stage!");
                         ReplacePlantWithGrown(selectedTile, 2);
+                        ButtonManager.Instance.IncrementStage3Counter();
+
+
                     }
                 }
             }
@@ -133,6 +136,7 @@ public class SpawnPlant : MonoBehaviour
         Tile selectedTile = Tile.SelectedTile;
         if (selectedTile != null && selectedTile.currentPlant != null)
         {
+            Debug.Log("reap button pressed");
             if (selectedTile.growthStage == 2) // If destroying a stage 3 plant, decrement counter
             {
                 ButtonManager.Instance.DecrementStage3Counter();
