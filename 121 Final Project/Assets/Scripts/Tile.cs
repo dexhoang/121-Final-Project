@@ -18,7 +18,7 @@ public class Tile : MonoBehaviour
     private static Tile _selectedTile;
 
     public GameObject currentPlant;
-    public int growthStage = 0;
+    public int growthStage = 0;  // Growth stage of the plant on the tile
 
     public float waterLevel = 0f;
     public float sunLevel = 0f;
@@ -83,6 +83,7 @@ public class Tile : MonoBehaviour
         float distance = Vector3.Distance(_player.position, transform.position);
         return distance < _playerRange;
     }
+
     private void RandomizeLevels()
     {
         waterLevel = 0f;
@@ -148,5 +149,21 @@ public class Tile : MonoBehaviour
         }
         Debug.Log($"Total similar plants found: {count}");
         return count;
+    }
+
+    // Save the plant's state (use SaveLoadManager's PlantState class)
+    public SaveLoadManager.PlantState SavePlantState()
+    {
+        return new SaveLoadManager.PlantState
+        {
+            position = transform.position,
+            growthStage = growthStage
+        };
+    }
+
+    // Restore the plant's state (use SaveLoadManager's PlantState class)
+    public void RestorePlantState(SaveLoadManager.PlantState plantState)
+    {
+        growthStage = plantState.growthStage;
     }
 }

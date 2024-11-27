@@ -270,9 +270,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1962242325}
-        m_TargetAssemblyTypeName: SceneSaveManager, Assembly-CSharp
-        m_MethodName: LoadScene
+      - m_Target: {fileID: 1962242326}
+        m_TargetAssemblyTypeName: SaveLoadManager, Assembly-CSharp
+        m_MethodName: LoadGame
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -2402,6 +2402,20 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 7296076256220136806, guid: 7e547fe5a8ce9c347880442e05d3dc10, type: 3}
   m_PrefabInstance: {fileID: 3829869461412370209}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &1015759595
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1015759594}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: beb43a0cb6d7545ccb378b84d7a38583, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  id: Sunflower2
+  growthStage: 2
 --- !u!1 &1067038034
 GameObject:
   m_ObjectHideFlags: 0
@@ -2582,6 +2596,20 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 3143498914116993012, guid: cb511aab8c35776429825b77f98d3122, type: 3}
   m_PrefabInstance: {fileID: 9162366105091278120}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &1127012621
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1127012620}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: beb43a0cb6d7545ccb378b84d7a38583, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  id: Herb2
+  growthStage: 2
 --- !u!1 &1133207772
 GameObject:
   m_ObjectHideFlags: 0
@@ -2850,9 +2878,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1962242325}
-        m_TargetAssemblyTypeName: SceneSaveManager, Assembly-CSharp
-        m_MethodName: SaveScene
+      - m_Target: {fileID: 1962242326}
+        m_TargetAssemblyTypeName: SaveLoadManager, Assembly-CSharp
+        m_MethodName: SaveGame
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -3533,6 +3561,20 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 3880443948812234158, guid: 9e07c9316e331e2429ca2e5ad666ea73, type: 3}
   m_PrefabInstance: {fileID: 3548525443687667470}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &1820475170
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1820475169}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: beb43a0cb6d7545ccb378b84d7a38583, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  id: Sunflower2
+  growthStage: 2
 --- !u!1 &1949101052
 GameObject:
   m_ObjectHideFlags: 0
@@ -3684,6 +3726,7 @@ GameObject:
   - component: {fileID: 1962242322}
   - component: {fileID: 1962242321}
   - component: {fileID: 1962242325}
+  - component: {fileID: 1962242326}
   m_Layer: 0
   m_Name: Save/GameManager
   m_TagString: Untagged
@@ -3698,7 +3741,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1962242320}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 213970db413534180bca5d4823697bf9, type: 3}
   m_Name: 
@@ -3798,7 +3841,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1962242320}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 9ad8fc04b433443989de33652e407346, type: 3}
   m_Name: 
@@ -3806,6 +3849,33 @@ MonoBehaviour:
   dayText: {fileID: 677541087}
   plantCountText: {fileID: 416931786}
   playerTransform: {fileID: 810351179}
+--- !u!114 &1962242326
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1962242320}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cb7b7113bab50495eaefec7537f56fb5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  player: {fileID: 810351179}
+  dayCountText: {fileID: 677541087}
+  plantCountText: {fileID: 416931786}
+  sunLevelText: {fileID: 382025416}
+  waterLevelText: {fileID: 336276675}
+  plants:
+  - {fileID: 2445613105251168825}
+  - {fileID: 2359106772233082816}
+  - {fileID: 6450798239279363620}
+  - {fileID: 1820475170}
+  - {fileID: 1015759595}
+  - {fileID: 1127012621}
+  - {fileID: 1946091973842810051}
+  - {fileID: 8325943429845023936}
+  - {fileID: 7072713614178492520}
 --- !u!1 &2102363734
 GameObject:
   m_ObjectHideFlags: 0
@@ -4261,8 +4331,30 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 8555845052754065473, guid: 1c0495bef799fe24e9e0b255ce77ff7b, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1946091973842810051}
   m_SourcePrefab: {fileID: 100100000, guid: 1c0495bef799fe24e9e0b255ce77ff7b, type: 3}
+--- !u!1 &1946091973842810050 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 8555845052754065473, guid: 1c0495bef799fe24e9e0b255ce77ff7b, type: 3}
+  m_PrefabInstance: {fileID: 1946091973842810049}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1946091973842810051
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1946091973842810050}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: beb43a0cb6d7545ccb378b84d7a38583, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  id: Sunflower3
+  growthStage: 3
 --- !u!1001 &2359106772233082814
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -4326,8 +4418,30 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 4739876260775261899, guid: 379fd989f4497e64f98b039b6984fe6d, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 2359106772233082816}
   m_SourcePrefab: {fileID: 100100000, guid: 379fd989f4497e64f98b039b6984fe6d, type: 3}
+--- !u!1 &2359106772233082815 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 4739876260775261899, guid: 379fd989f4497e64f98b039b6984fe6d, type: 3}
+  m_PrefabInstance: {fileID: 2359106772233082814}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &2359106772233082816
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2359106772233082815}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: beb43a0cb6d7545ccb378b84d7a38583, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  id: Mushroom1
+  growthStage: 1
 --- !u!1001 &2445613105251168823
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -4387,8 +4501,30 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 826641527538697127, guid: 828d641cc09f44b4db94a863b193e030, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 2445613105251168825}
   m_SourcePrefab: {fileID: 100100000, guid: 828d641cc09f44b4db94a863b193e030, type: 3}
+--- !u!1 &2445613105251168824 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 826641527538697127, guid: 828d641cc09f44b4db94a863b193e030, type: 3}
+  m_PrefabInstance: {fileID: 2445613105251168823}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &2445613105251168825
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2445613105251168824}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: beb43a0cb6d7545ccb378b84d7a38583, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  id: Sunflower1
+  growthStage: 1
 --- !u!1001 &3548525443687667470
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -4444,7 +4580,10 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 3880443948812234158, guid: 9e07c9316e331e2429ca2e5ad666ea73, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1820475170}
   m_SourcePrefab: {fileID: 100100000, guid: 9e07c9316e331e2429ca2e5ad666ea73, type: 3}
 --- !u!1001 &3829869461412370209
 PrefabInstance:
@@ -4501,7 +4640,10 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 7296076256220136806, guid: 7e547fe5a8ce9c347880442e05d3dc10, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1015759595}
   m_SourcePrefab: {fileID: 100100000, guid: 7e547fe5a8ce9c347880442e05d3dc10, type: 3}
 --- !u!1001 &6450798239279363618
 PrefabInstance:
@@ -4558,8 +4700,30 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 6564109127209509518, guid: d188dde20e77d9d4e8c7228ffd58a867, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 6450798239279363620}
   m_SourcePrefab: {fileID: 100100000, guid: d188dde20e77d9d4e8c7228ffd58a867, type: 3}
+--- !u!1 &6450798239279363619 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 6564109127209509518, guid: d188dde20e77d9d4e8c7228ffd58a867, type: 3}
+  m_PrefabInstance: {fileID: 6450798239279363618}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &6450798239279363620
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6450798239279363619}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: beb43a0cb6d7545ccb378b84d7a38583, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  id: Herb1
+  growthStage: 1
 --- !u!1001 &7072713614178492518
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -4615,8 +4779,30 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 7381720750051792229, guid: 27a2b8b4d3bc88e44817677e8af5eaa5, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 7072713614178492520}
   m_SourcePrefab: {fileID: 100100000, guid: 27a2b8b4d3bc88e44817677e8af5eaa5, type: 3}
+--- !u!1 &7072713614178492519 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 7381720750051792229, guid: 27a2b8b4d3bc88e44817677e8af5eaa5, type: 3}
+  m_PrefabInstance: {fileID: 7072713614178492518}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &7072713614178492520
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7072713614178492519}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: beb43a0cb6d7545ccb378b84d7a38583, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  id: Herb3
+  growthStage: 3
 --- !u!1001 &8325943429845023934
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -4672,8 +4858,30 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 4815779937091643856, guid: b9d629400fe396f4e966c0c7cf7f839e, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 8325943429845023936}
   m_SourcePrefab: {fileID: 100100000, guid: b9d629400fe396f4e966c0c7cf7f839e, type: 3}
+--- !u!1 &8325943429845023935 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 4815779937091643856, guid: b9d629400fe396f4e966c0c7cf7f839e, type: 3}
+  m_PrefabInstance: {fileID: 8325943429845023934}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &8325943429845023936
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8325943429845023935}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: beb43a0cb6d7545ccb378b84d7a38583, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  id: Mushroom3
+  growthStage: 3
 --- !u!1001 &9162366105091278120
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -4729,7 +4937,10 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 3143498914116993012, guid: cb511aab8c35776429825b77f98d3122, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1127012621}
   m_SourcePrefab: {fileID: 100100000, guid: cb511aab8c35776429825b77f98d3122, type: 3}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
