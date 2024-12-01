@@ -2195,9 +2195,6 @@ MonoBehaviour:
   sunText: {fileID: 0}
   _playerRange: 2
   currentPlant: {fileID: 0}
-  growthStage: 0
-  waterLevel: 0
-  sunLevel: 0
 --- !u!4 &910400905
 Transform:
   m_ObjectHideFlags: 0
@@ -2296,9 +2293,21 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
+      - m_Target: {fileID: 1484910845}
+        m_TargetAssemblyTypeName: LevelManager, Assembly-CSharp
+        m_MethodName: RandomizeTileData
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
       - m_Target: {fileID: 910400904}
         m_TargetAssemblyTypeName: Tile, Assembly-CSharp
-        m_MethodName: IncreaseLevelsRandomly
+        m_MethodName: UpdateText
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -2775,11 +2784,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d239e55214f414b4ea30727165c096cc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _width: 15
+  _width: 12
   _height: 6
-  _startX: 10
-  _startY: 4
   _tilePrefab: {fileID: 67611409376310496, guid: ce8e07f49bc3e7d4d83ccd6317713fa5, type: 3}
+  gridStartPosition: {x: 12, y: 9, z: 0}
+  tilesInGrid: 0
+  gridParent: {fileID: 1958554070}
 --- !u!4 &1227218365
 Transform:
   m_ObjectHideFlags: 0
@@ -3356,6 +3366,55 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1342596683}
   m_CullTransparentMesh: 1
+--- !u!1 &1484910844
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1484910846}
+  - component: {fileID: 1484910845}
+  m_Layer: 0
+  m_Name: LevelManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1484910845
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1484910844}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f1ec0a512aa81f149b266a10b106202d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _gridManager: {fileID: 1227218364}
+  minWaterLevel: 0
+  maxWaterLevel: 6
+  minSunLevel: 0
+  maxSunLevel: 80
+--- !u!4 &1484910846
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1484910844}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 15.448036, y: 5.5006995, z: 0.028240228}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1596129689
 GameObject:
   m_ObjectHideFlags: 0
@@ -3713,6 +3772,37 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1949101052}
   m_CullTransparentMesh: 1
+--- !u!1 &1958554069
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1958554070}
+  m_Layer: 0
+  m_Name: GridParent
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1958554070
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1958554069}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 15.448036, y: 5.5006995, z: 0.028240228}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1962242320
 GameObject:
   m_ObjectHideFlags: 0
@@ -4967,3 +5057,5 @@ SceneRoots:
   - {fileID: 1946091973842810049}
   - {fileID: 8325943429845023934}
   - {fileID: 7072713614178492518}
+  - {fileID: 1958554070}
+  - {fileID: 1484910846}

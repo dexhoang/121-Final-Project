@@ -43,8 +43,8 @@ public class ButtonManager : MonoBehaviour
     public void ShowButtonsAtTile(Vector3 tilePosition, float water, float sun)
     {
         _buttonPanel.SetActive(true);
-        waterText.text = "Water Level: " + water.ToString("F1");
-        sunText.text = "Sun Level: " + sun.ToString("F1");
+        waterText.text = "Water Level: " + water.ToString();
+        sunText.text = "Sun Level: " + sun.ToString();
     }
 
     public void HideButtons()
@@ -60,13 +60,6 @@ public class ButtonManager : MonoBehaviour
     private void OnIncreaseLevelsClicked()
     {
         dayCounter++;
-
-        Tile[] allTiles = GameObject.FindObjectsOfType<Tile>();
-        foreach (Tile tile in allTiles)
-        {
-            tile.IncreaseLevelsRandomly();
-        }
-
         UpdateDayCounterText();
     }
 

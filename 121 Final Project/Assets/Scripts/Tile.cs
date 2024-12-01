@@ -14,22 +14,30 @@ public class Tile : MonoBehaviour
     [SerializeField] private Text sunText;
 
     private Transform _player;
-    public float _playerRange = 2f;
     private static Tile _selectedTile;
+    private GridManager _gridManager;  // Reference to GridManager
+    private int _tileIndex;           // This tile's index in the grid array
 
-    public GameObject currentPlant;
-    public int growthStage = 0;  // Growth stage of the plant on the tile
-
-    public float waterLevel = 0f;
-    public float sunLevel = 0f;
+    public float _playerRange = 2f;
     public static Tile SelectedTile => _selectedTile;
+    public GameObject currentPlant;
 
-    public void Init(bool isOffset)
+    private bool _hasIncrementedStage3Counter = false;
+    public bool HasIncrementedStage3Counter
+    {
+        get => _hasIncrementedStage3Counter;
+        set => _hasIncrementedStage3Counter = value;
+    }
+
+    public void Init(bool isOffset, GridManager gridManager, int tileIndex)
     {
         _renderer.color = isOffset ? _offsetColor : _baseColor;
         _player = GameObject.FindGameObjectWithTag("Player").transform;
-        RandomizeLevels();
-        UpdateUI();
+
+        _gridManager = gridManager;
+        _tileIndex = tileIndex;
+
+        UpdateUI(); // Use grid data to update UI
     }
 
     private void OnMouseEnter()
@@ -50,6 +58,8 @@ public class Tile : MonoBehaviour
         if (IsWithinRange())
         {
             SelectTile();
+            var waterLevel = GetWaterLevel();
+            var sunLevel = GetSunLevel();
             ButtonManager.Instance.ShowButtonsAtTile(transform.position, waterLevel, sunLevel);
         }
         else
@@ -83,32 +93,36 @@ public class Tile : MonoBehaviour
         float distance = Vector3.Distance(_player.position, transform.position);
         return distance < _playerRange;
     }
-
-    private void RandomizeLevels()
+    public byte GetWaterLevel()
     {
-        waterLevel = 0f;
-        sunLevel = 0f;
+        return _gridManager.GetTileData(_tileIndex, 0);
+    }
+
+    public byte GetSunLevel()
+    {
+        return _gridManager.GetTileData(_tileIndex, 1);
+    }
+
+    public byte GetGrowthStage()
+    {
+        return _gridManager.GetTileData(_tileIndex, 2);
+    }
+
+    public void SetGrowthStage(byte newStage)
+    {
+        _gridManager.SetTileData(_tileIndex, GetWaterLevel(), GetSunLevel(), newStage);
     }
 
     public void UpdateUI()
     {
         if (waterText != null)
         {
-            waterText.text = "Water: " + waterLevel.ToString("F1");
+            waterText.text = "Water: " + GetWaterLevel();
         }
         if (sunText != null)
         {
-            sunText.text = "Sun: " + sunLevel.ToString("F1");
+            sunText.text = "Sun: " + GetSunLevel();
         }
-    }
-
-    public void IncreaseLevelsRandomly()
-    {
-        float additionalWater = Random.Range(0f, 3f);
-        float additionalSun = Random.Range(0f, 3f);
-        waterLevel += additionalWater;
-        sunLevel = additionalSun;
-        UpdateUI();
     }
 
     public int CountSimilarPlants(string plantTag)
@@ -142,28 +156,26 @@ public class Tile : MonoBehaviour
                     if (neighborTile.currentPlant.CompareTag(plantTag))
                     {
                         count++;
-                        Debug.Log($"Found a similar plant at position: {neighborTile.transform.position}");
                     }
                 }
             }
         }
-        Debug.Log($"Total similar plants found: {count}");
         return count;
     }
 
-    // Save the plant's state (use SaveLoadManager's PlantState class)
-    public SaveLoadManager.PlantState SavePlantState()
-    {
-        return new SaveLoadManager.PlantState
-        {
-            position = transform.position,
-            growthStage = growthStage
-        };
-    }
+    //// Save the plant's state (use SaveLoadManager's PlantState class)
+    //public SaveLoadManager.PlantState SavePlantState()
+    //{
+    //    return new SaveLoadManager.PlantState
+    //    {
+    //        position = transform.position,
+    //        growthStage = growthStage
+    //    };
+    //}
 
-    // Restore the plant's state (use SaveLoadManager's PlantState class)
-    public void RestorePlantState(SaveLoadManager.PlantState plantState)
-    {
-        growthStage = plantState.growthStage;
-    }
+    //// Restore the plant's state (use SaveLoadManager's PlantState class)
+    //public void RestorePlantState(SaveLoadManager.PlantState plantState)
+    //{
+    //    growthStage = plantState.growthStage;
+    //}
 }
